@@ -17,8 +17,8 @@ pipeline{
                 sshagent (credentials: ['devserver']) {
                     sh 'scp -o StrictHostKeyChecking=no Dockerfile root@192.168.1.101'
                     sh 'scp -o StrictHostKeyChecking=no target/*.jar root@192.168.1.101'
-					sh 'sh  -o StrictHostKeyChecking=no -l root 192.168.1.101 docker build -t myimage .'
-					sh 'sh  -o StrictHostKeyChecking=no -l root 192.168.1.101 docker run -itd --name=server1 -p 8080:8080 myimage'
+		    sh 'sh  -o StrictHostKeyChecking=no root@192.168.1.101 docker build -t myimage .'
+		    sh 'sh  -o StrictHostKeyChecking=no root@192.168.1.101 docker run -itd --name=server1 -p 8080:8080 myimage'
                     
                 }
                 }
